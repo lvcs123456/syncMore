@@ -3,14 +3,15 @@ package MoreThread;
 import java.util.concurrent.TimeUnit;
 
 public class volatileTest extends Thread{
-    /**volatile*/ static boolean tj=true;//我的环境不佳volatile,照样线程间可见,可能是缓存一致性的问题
+    /**volatile*/  boolean tj=true;//我的环境不佳volatile,照样线程间可见,可能是缓存一致性的问题
 
     public static void main(String[] args) {
-        Thread thread = new Thread(){
+        final volatileTest volatileTest = new volatileTest();
+        Thread thread = new Thread(volatileTest){
             @Override
             public void run() {
                 System.out.println(this.getName()+"开始");
-                while(tj){
+                while(volatileTest.tj){
 
                 }
                 System.out.println(this.getName()+"结束");
@@ -22,7 +23,7 @@ public class volatileTest extends Thread{
         }catch (Exception e){
 
         }
-        tj=false;
+        volatileTest.tj=false;
 
     }
 
