@@ -25,6 +25,7 @@ public class ReentrantLockIm extends Thread{
 
     public static void main(String[] args) {
         final ReentrantLockIm reentrantLockIm = new ReentrantLockIm();
+        ReentrantLock reentrantLock = new ReentrantLock(true);//未用用来查看公平所源码
         new Thread(){
             @Override
             public void run() {
