@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+    <bean name="TestInstance" class="entity.TestInstance" >
+        <property name="entity" ref="TestInstance2"></property>
+        <property name="age" value="20"></property>
+    </bean>
+    <bean name="TestInstance2" class="entity.TestInstance2">
+        <property name="entity" ref="TestInstance3"></property>
+    </bean>
+    <bean name="TestInstance3" class="entity.TestInstance3" >
+        <property name="entity" ref="TestInstance"></property>
+    </bean>
+
+</beans>
